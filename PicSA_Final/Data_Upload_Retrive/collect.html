@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Retriving</title>
+</head>
+<body>
+
+<table id="List">
+	
+	<tbody>
+		
+
+	</tbody>
+
+</table>
+
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-storage.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
+
+<script>
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyAWhYGjkz93bKeFyC2et_9HDQ7GnRbB9Wc",
+    authDomain: "data-auth-87e83.firebaseapp.com",
+    databaseURL: "https://data-auth-87e83.firebaseio.com",
+    projectId: "data-auth-87e83",
+    storageBucket: "data-auth-87e83.appspot.com",
+    messagingSenderId: "573393779634",
+    appId: "1:573393779634:web:2a217a6fcd27a100ba42ab",
+    measurementId: "G-LP82WPDJW1"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+
+var i=0;
+// Since you mentioned your images are in a folder,
+// we'll create a Reference to that folder:
+var storageRef = firebase.storage().ref();
+
+	$('#List').find('tbody').html('');
+
+// Now we get the references of these images
+storageRef.child('test@gmail.com/').listAll().then(function(result) {
+  result.items.forEach(function(imageRef) {
+    // And finally display them
+    i++
+    displayImage(i,imageRef);
+    console.log(imageRef.toString());
+
+
+
+  });
+}).catch(function(error) {
+  // Handle any errors
+});
+
+function displayImage(row,imageRef) {
+  imageRef.getDownloadURL().then(function(url) {
+    
+   let new_html='';
+   new_html +='<tr>';
+   new_html +='<td>';
+   new_html +=row;
+   new_html +='</td>';
+   new_html +='<td>';
+   new_html +='<img src="'+url+'" width="100px">';
+   new_html +='</td>';
+   new_html +='</tr>';
+
+   $('#List').find('tbody').append(new_html);
+
+  }).catch(function(error) {
+    // Handle any errors
+  });
+}
+
+
+
+
+
+
+
+</script>	
+
+</body>
+</html>

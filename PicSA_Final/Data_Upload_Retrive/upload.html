@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Upload/Retrieve</title>
+	<link rel="stylesheet" type="text/css" href="upload.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<style media="screen">
+		body{
+			display:flex;
+			min-height: 100vh;
+			width:100%;
+			padding: 0;
+			margin:0;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+
+		#uploader{
+			/*appearance:none;*/
+			/*-webkit-appearance:none;*/
+			width:50%;
+			margin-bottom: 10px;
+		}
+
+	</style>
+</head>
+<body>
+
+	<table id="List">
+	
+	<tbody>
+		
+
+	</tbody>
+
+	</table>
+
+
+	
+<div id="info">
+  <ul style="list-style: none; justify-content: center; text-align: center;">
+    <li><h2>Your images:</h2></li>
+    <li><h3 id="choose">clickNupload</h3></li>
+    <li><h1 id="header1">Progress</h1></li>
+    <li><progress value="0" max="100" id="uploader">0%</progress></li>
+    <li><h2 id="pecent">0%</h2></li>
+  </ul>
+</div>
+
+<input  type="file" id="fileName"  onclick="show()" value="upload"/>
+
+
+<div id="imgStyle1" class="myimageclass">
+	
+    <img src=""  id="image1" />
+    <img src="" id="image2" />
+    <img src="" id="image3" />
+     <img src="" id="image4" />
+    <img src="" id="image5" />
+    <img src="" id="image6" />
+     <img src="" id="image7" />
+    <img src="" id="image8" />
+    <img src="" id="image9" />
+     <img src="" id="image10" />
+      <img src="" id="image11" />
+    <img src="" id="image12" />
+    <img src="" id="image13" />
+    <img src="" id="image14" />
+    <img src="" id="image15" />
+     <img src="" id="image16" />
+    <img src="" id="image17" />
+    <img src="" id="image18" />
+     <img src="" id="image19" />
+    <img src="" id="image20" />
+        <img src="" id="image21" />
+    <img src="" id="image22" />
+    <img src="" id="image23" />
+
+     <img src="" id="image24" />
+    <img src="" id="image25" />
+    <img src="" id="image26" />
+     <img src="" id="image27" />
+    <img src="" id="image28" />
+    <img src="" id="image29" />
+    <img src="" id="image30" />
+    <img src="" id="image31" />
+    <img src="" id="image32" />
+    <img src="" id="image33" />
+    <img src="" id="image34" />
+    <img src="" id="image35" />
+    <img src="" id="image36" />
+    <img src="" id="image37" />
+    <img src="" id="image38" />
+    <img src="" id="image39" />
+    <img src="" id="image40" />
+
+    <img src="" id="image41" />
+    <img src="" id="image42" />
+    <img src="" id="image43" />
+
+     <img src="" id="image44" />
+    <img src="" id="image45" />
+    <img src="" id="image46" />
+     <img src="" id="image47" />
+    <img src="" id="image48" />
+    <img src="" id="image49" />
+     <img src="" id="image50" />
+
+    <img src="" id="image51" />
+    <img src="" id="image52" />
+    <img src="" id="image53" />
+
+     <img src="" id="image54" />
+    <img src="" id="image55" />
+    <img src="" id="image56" />
+     <img src="" id="image57" />
+    <img src="" id="image58" />
+    <img src="" id="image59" />
+     <img src="" id="image60" />
+   
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+
+
+	function show()
+	{
+			document.getElementById('uploader').style.display="block";
+			document.getElementById('header1').style.display="block";
+			document.getElementById('pecent').style.display="block";
+			document.getElementById('choose').style.display="none";
+
+	}
+
+
+
+
+
+  // Your web app's Firebase configuration
+
+	var info=localStorage.getItem("ID")+"/";
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyAWhYGjkz93bKeFyC2et_9HDQ7GnRbB9Wc",
+    authDomain: "data-auth-87e83.firebaseapp.com",
+    databaseURL: "https://data-auth-87e83.firebaseio.com",
+    projectId: "data-auth-87e83",
+    storageBucket: "data-auth-87e83.appspot.com",
+    messagingSenderId: "573393779634",
+    appId: "1:573393779634:web:2a217a6fcd27a100ba42ab",
+    measurementId: "G-LP82WPDJW1"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+
+
+//To upload
+
+var uploader=document.getElementById('uploader');
+var fileName=document.getElementById('fileName');
+
+fileName.addEventListener('change', function(e){
+
+	var file=e.target.files[0];
+
+	var storageRef=firebase.storage().ref(info+file.name);
+
+	var task=storageRef.put(file);
+
+	task.on('state_changed',
+
+		function progress(snapshot){
+
+			
+			var percentage=(snapshot.bytesTransferred/snapshot.totalBytes)*100;
+			uploader.value=percentage;
+			 document.getElementById("pecent").innerHTML= percentage.toFixed(1)+"%";
+			
+		},
+
+		function error(err)
+		{
+
+		},
+		function complete(){
+
+
+				
+
+		}
+
+		);
+});
+
+
+
+
+
+
+
+
+//To Download
+
+
+var i=0;
+// Since you mentioned your images are in a folder,
+// we'll create a Reference to that folder:
+var storageRef = firebase.storage().ref();
+
+	$('#List').find('tbody').html('');
+
+// Now we get the references of these images
+storageRef.child(info).listAll().then(function(result) {
+  result.items.forEach(function(imageRef) {
+    // And finally display them
+    i++
+    displayImage(i,imageRef);
+
+    console.log(imageRef.toString());
+
+  });
+}).catch(function(error) {
+  // Handle any errors
+});
+
+function displayImage(row,imageRef) {
+  imageRef.getDownloadURL().then(function(url) {
+    
+  	var r=row.toString();
+  	var img="image"+r;
+	document.getElementById(img).src = url;
+  
+   if(imageRef.toString()!=null && imageRef.toString()!=undefined)
+    {
+      var x = document.querySelectorAll('img')
+      x.forEach( function(element) {
+        element.style.background = 'none'
+      });
+    }
+
+  }).catch(function(error) {
+    // Handle any errors
+  });
+}
+
+
+
+</script>
+
+
+
+</body>
+</html>

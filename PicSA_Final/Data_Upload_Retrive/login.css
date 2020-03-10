@@ -1,0 +1,195 @@
+/*@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');*/
+
+
+#signUp
+{
+
+	display: none;
+}
+
+
+/** {
+	box-sizing: border-box;
+	border-radius: 10px;
+}*/
+
+body {
+
+	 background-repeat: no-repeat;
+	background-color: rgba(238,238,238,0.7);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+	margin: -20px 0 50px;
+}
+
+h1 {
+	margin-top: 30px;
+	font-weight: bold;
+	font-style: italic;
+}
+
+h2 {
+	font-style: italic;
+	text-align: center;
+}
+
+
+
+
+button {
+
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	margin-top: 20px;
+
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+
+
+form {
+
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+input {
+
+	background-color: #eee;
+	border: none;
+	height: 40px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	margin-right: 0px;
+	width: 100%;
+	text-align: center;
+}
+input:focus{
+	background-color: #fff;
+	border-bottom: solid 2px;
+	border-bottom-color: green;
+}
+
+.container {
+
+	background-color: #fff;
+	color:	rgba(255,0,0,1);
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 358px;
+	max-width: 100%;
+	min-height: 580px;
+
+}
+
+
+
+.sign-up-container.log-in-container {
+	
+	position: absolute;
+	top:15%;
+	left: 0%;
+	width: 50%;
+	z-index: 2;
+	
+}
+
+#log:hover{
+	font-style: italic; 
+	transform: scale(1.1);
+	transition-duration: 0.4s
+	width: 100%;
+	
+}
+#sign:hover{
+
+	font-style: italic; 
+	transform: scale(1.1);
+	transition-duration: 0.4s
+	width: 100%;
+	
+}
+
+.tab2{
+  		top:80%;
+  		position: absolute;
+  		left:22%;
+  		height:60px;
+  		width: 200px;
+  		border-radius:30px;
+
+  }
+
+ .tab1{
+  		top:80%;
+  		position: absolute;
+  		left:22%;
+  		height:60px;
+  		width: 200px;
+  		border-radius:30px;
+  	}
+.tab1:hover
+	{
+	transform: scale(1.1);
+	transition-duration: 0.2s
+	}
+.tab2:hover
+{
+  	transform: scale(1.1);
+	transition-duration: 0.2s
+ }
+
+h3{
+	text-align: center;
+	font-size: 25px;
+	color: grey;
+	letter-spacing: 0.5px;
+	font-family: monospace, sans-serif;
+	position: absolute;
+	top:60%;
+	left:45%;
+}
+@media(max-width:500px)
+{
+
+	.container{
+		width: 80%;
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
+
+	.tab2,.tab1{
+  		margin:0 auto;
+  		left:50%;
+  		transform:translate(-50%);
+  		
+	}
+}

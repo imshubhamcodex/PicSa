@@ -1,0 +1,83 @@
+
+#header1,#pecent,#uploader
+{
+	display: none;
+}
+
+
+body{
+	background-color: #eee;
+}
+progress {
+  border: 20px;
+  height: 18px;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+
+progress::-webkit-progress-bar {
+   background-color: grey;
+  border: 20px;
+  height: 18px;
+  border-radius: 20px;
+}
+
+#fileName{
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	cursor: pointer;
+	width:100%
+	transform: scale(.95);
+	text-align: center;
+
+}
+#uploader{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+#info{
+	margin: 0 auto;
+	display: block;
+	width: 100%;
+}
+#info ul{
+	width: 100%;
+	padding: 0px;
+}
+
+
+.message{
+	font-style: italic;
+	font-size: 30px;
+}
+.myimageclass{
+	margin-top: 50px;
+}
+.myimageclass img{
+	height: 370px;
+	width: 100%;
+	margin: 0 auto;
+}
+img {
+    text-indent: -10000px;
+    transition: all ease-in 0.4s;
+    overflow: hidden;
+}
+img:hover{
+	transform:scale(1.1);
+	
+}
+img {
+  background: url('preload.gif') no-repeat;
+  align-items: center;
+  text-align: center;
+}
